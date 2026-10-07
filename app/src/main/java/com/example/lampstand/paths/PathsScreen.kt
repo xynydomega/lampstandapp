@@ -22,7 +22,8 @@ import com.example.lampstand.ui.theme.LampStandTheme
 
 @Composable
 fun PathsScreen(
-    onItemSelected: (Int) -> Unit = {}
+    onItemSelected: (Int) -> Unit = {},
+    onViewPathsClick: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -70,7 +71,9 @@ fun PathsScreen(
         Spacer(modifier = Modifier.height(42.dp))
 
         // Category card: 335 x 111, top 224, left 20
-        CategoryCard()
+        CategoryCard(
+            onButtonClick = onViewPathsClick
+        )
 
         // Blank content for now
         Box(

@@ -73,6 +73,7 @@ fun PathsTopBar(
                 .weight(1f)
                 .height(24.dp)
         ) {
+            if (title.isNotEmpty()) {
             Text(
                 text = title,
                 fontSize = 18.sp,
@@ -84,6 +85,7 @@ fun PathsTopBar(
                 maxLines = 1,
                 modifier = Modifier.width(217.dp)
             )
+            }
         }
 
         // Invisible balance so the 217-wide title stays optically centered

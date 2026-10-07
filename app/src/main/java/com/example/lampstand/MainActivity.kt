@@ -12,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.lampstand.dashboard.DashboardScreen
+import com.example.lampstand.paths.FandAPathScreen
 import com.example.lampstand.paths.PathsScreen
 import com.example.lampstand.splash.LoadingScreen
 import com.example.lampstand.ui.theme.LampStandTheme
@@ -34,9 +35,19 @@ class MainActivity : ComponentActivity() {
                     LoadingScreen()
                 } else {
                     var selectedTab by remember { mutableStateOf(0) }
-                    when (selectedTab) {
+                    var showFandA by remember { mutableStateOf(false) }
+                    if (showFandA) {
+                        FandAPathScreen(
+                            onBack = { showFandA = false },
+                            onItemSelected = {
+                                showFandA = false
+                                selectedTab = it
+                            }
+                        )
+                    } else when (selectedTab) {
                         1 -> PathsScreen(
-                            onItemSelected = { selectedTab = it }
+                            onItemSelected = { selectedTab = it },
+                            onViewPathsClick = { showFandA = true }
                         )
                         else -> DashboardScreen(
                             onItemSelected = { selectedTab = it }
