@@ -9,6 +9,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.layout.Spacer
@@ -20,6 +22,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -37,7 +40,8 @@ fun DashboardScreen() {
     Column(
         modifier = Modifier
             .statusBarsPadding()
-            .padding(top = 8.dp, start = 16.dp, end = 16.dp),
+            .verticalScroll(rememberScrollState())
+            .padding(top = 8.dp, start = 16.dp, end = 16.dp, bottom = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
@@ -243,6 +247,34 @@ fun DashboardScreen() {
                 )
             }
             }
+        }
+
+        Spacer(modifier = Modifier.height(48.dp))
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(108.dp)
+                .background(
+                    color = Color(0x1A335E78),
+                    shape = RoundedCornerShape(4.dp)
+                )
+        ) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.CenterStart)
+                    .width(3.dp)
+                    .fillMaxHeight()
+                    .background(
+                        color = Color(0xFF335E78),
+                        shape = RoundedCornerShape(
+                            topStart = 4.dp,
+                            bottomStart = 4.dp,
+                            topEnd = 0.dp,
+                            bottomEnd = 0.dp
+                        )
+                    )
+            )
         }
     }
 }
