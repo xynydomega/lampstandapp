@@ -27,6 +27,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import com.example.lampstand.R
 import com.example.lampstand.ui.theme.LampStandTheme
@@ -174,6 +175,73 @@ fun DashboardScreen() {
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.widthIn(max = 250.dp)
             )
+
+            Spacer(modifier = Modifier.height(13.dp))
+
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .widthIn(min = 183.dp)
+                    .heightIn(min = 18.dp)
+                    .background(
+                        color = Color(0xFF92ADBE),
+                        shape = RoundedCornerShape(4.dp)
+                    )
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "Day 4: Naming the Struggle . 7 min",
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Medium,
+                    lineHeight = 14.sp,
+                    letterSpacing = 0.sp,
+                    color = Color(0xFF184159),
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            Spacer(modifier = Modifier.height(13.dp))
+
+            Text(
+                text = "When things are uncertain, it's natural to want control and try to figure everything out before moving forward. But this scripture challenges that habit.",
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Normal,
+                lineHeight = 16.sp,
+                letterSpacing = 0.sp,
+                color = Color(0xFFF0F0F0),
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(35.dp))
+
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(min = 42.dp)
+                    .background(
+                        color = Color.White,
+                        shape = RoundedCornerShape(8.dp)
+                    )
+                    .padding(horizontal = 12.dp, vertical = 10.dp)
+            ) {
+                Text(
+                    text = "Continue Today’s Session",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    lineHeight = 22.sp,
+                    letterSpacing = 0.sp,
+                    textAlign = TextAlign.Center,
+                    color = Color(0xFF335E78),
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
             }
         }
     }
