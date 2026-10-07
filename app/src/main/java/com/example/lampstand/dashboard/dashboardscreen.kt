@@ -13,6 +13,9 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.Column
@@ -24,6 +27,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import com.example.lampstand.R
 import com.example.lampstand.ui.theme.LampStandTheme
 
@@ -98,7 +102,80 @@ fun DashboardScreen() {
                     color = Color(0xFF335E78),
                     shape = RoundedCornerShape(20.dp)
                 )
-        )
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 13.dp, top = 24.dp, end = 13.dp)
+            ) {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .widthIn(min = 143.dp)
+                    .heightIn(min = 18.dp)
+                    .background(
+                        color = Color(0xFFE7F6FF),
+                        shape = RoundedCornerShape(4.dp)
+                    )
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "ACTIVE PATH . DAY 4 OF 7",
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Medium,
+                    lineHeight = 14.sp,
+                    letterSpacing = 0.sp,
+                    color = Color(0xFF335E78),
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(min = 14.dp)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_read_cv_logo),
+                    contentDescription = null,
+                    tint = Color(0xFF92ADBE),
+                    modifier = Modifier.size(12.dp)
+                )
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "FORMATION IN PROGRESS",
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    lineHeight = 14.sp,
+                    letterSpacing = 0.sp,
+                    color = Color(0xFF92ADBE),
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            Spacer(modifier = Modifier.height(13.dp))
+
+            Text(
+                text = "Trust in Uncertainty",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.SemiBold,
+                lineHeight = 20.sp,
+                letterSpacing = 0.sp,
+                color = Color(0xFFFFFFFF),
+                maxLines = 1,
+                softWrap = false,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.widthIn(max = 250.dp)
+            )
+            }
+        }
     }
 }
 
