@@ -19,6 +19,11 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -39,7 +44,13 @@ import com.example.lampstand.ui.theme.LampStandTheme
 fun DashboardScreen() {
     Column(
         modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
             .statusBarsPadding()
+    ) {
+    Column(
+        modifier = Modifier
+            .weight(1f)
             .verticalScroll(rememberScrollState())
             .padding(top = 8.dp, start = 16.dp, end = 16.dp, bottom = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -322,13 +333,84 @@ fun DashboardScreen() {
                 )
             }
         }
+
+        Spacer(modifier = Modifier.height(46.dp))
+
+        Text(
+            text = "Recommended For You",
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium,
+            lineHeight = 18.sp,
+            letterSpacing = 0.sp,
+            color = Color(0xFF535353),
+            maxLines = 1,
+            softWrap = false,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 18.dp)
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        Image(
+            painter = painterResource(id = R.drawable.recommended),
+            contentDescription = "Recommended",
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .width(146.dp)
+                .height(121.dp)
+                .background(
+                    color = Color(0xFFD4DDE4),
+                    shape = RoundedCornerShape(4.dp)
+                )
+                .clip(RoundedCornerShape(4.dp))
+                .align(Alignment.Start)
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Column(
+            modifier = Modifier
+                .width(146.dp)
+                .align(Alignment.Start),
+            verticalArrangement = Arrangement.spacedBy(2.dp)
+        ) {
+            Text(
+                text = "Fear & Anxiety",
+                fontSize = 12.sp,
+                fontWeight = FontWeight.SemiBold,
+                lineHeight = 14.sp,
+                letterSpacing = 0.sp,
+                color = Color(0xFF1E1E1E),
+                maxLines = 1,
+                softWrap = false,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Text(
+                text = "6 Formation Paths",
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Normal,
+                lineHeight = 13.sp,
+                letterSpacing = 0.sp,
+                color = Color(0xFF828282),
+                maxLines = 1,
+                softWrap = false,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+    }
+
+    BottomNavBar()
     }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DashboardScreenPreview() {
-    LampStandTheme {
+    LampStandTheme(dynamicColor = false) {
         DashboardScreen()
     }
 }
