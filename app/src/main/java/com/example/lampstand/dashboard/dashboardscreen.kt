@@ -275,6 +275,52 @@ fun DashboardScreen() {
                         )
                     )
             )
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, top = 15.dp, end = 12.dp)
+            ) {
+                Text(
+                    text = "TODAY’S SCRIPTURE",
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    lineHeight = 15.sp,
+                    letterSpacing = 0.sp,
+                    color = Color(0xFF335E78),
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.widthIn(max = 149.dp)
+                )
+
+                Spacer(modifier = Modifier.height(9.dp))
+
+                Text(
+                    text = "“Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth.”",
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Normal,
+                    lineHeight = 15.sp,
+                    letterSpacing = 0.sp,
+                    color = Color(0xFF535353),
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                Spacer(modifier = Modifier.height(6.dp))
+
+                Text(
+                    text = "Psalm 46:10 (NIV)",
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    lineHeight = 15.sp,
+                    letterSpacing = 0.sp,
+                    color = Color(0xFF335E78),
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
         }
     }
 }
