@@ -3,6 +3,8 @@ package com.example.lampstand.paths
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -105,7 +107,11 @@ fun PathSearchBar(
 @Composable
 fun FeaturedPathCard(
     imageRes: Int? = null,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    badgeText: String = "7 days",
+    title: String = "Trust in Uncertainty",
+    description: String = "For when the future feels unclear and you\u2019re trying to trust God one step at a time.",
+    onClick: () -> Unit = {}
 ) {
     Row(
         modifier = modifier
@@ -114,6 +120,11 @@ fun FeaturedPathCard(
             .border(1.dp, Color(0xFFE8E8E8), RoundedCornerShape(8.dp))
             .clip(RoundedCornerShape(8.dp))
             .background(Color.White)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+                onClick = onClick
+            )
             .padding(12.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -125,13 +136,13 @@ fun FeaturedPathCard(
                 .height(98.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            // Even smaller container: 145 x 40, gap 10
-            Row(
+            // Even smaller container: 185 x 40 (widened from 145 so
+            // longer headings like "When Anxiety Won't Stop" fit in one line)
+            Column(
                 modifier = Modifier
-                    .width(145.dp)
+                    .width(185.dp)
                     .height(40.dp),
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalArrangement = Arrangement.spacedBy(5.dp)
             ) {
                 // Single badge row (not duplicated): icon + text, wraps content
                 // so "7 days" is never clipped to just "7".
@@ -146,7 +157,7 @@ fun FeaturedPathCard(
                         modifier = Modifier.size(12.dp)
                     )
                     Text(
-                        text = "7 days",
+                        text = badgeText,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Medium,
                         lineHeight = 15.sp,
@@ -155,7 +166,34 @@ fun FeaturedPathCard(
                         maxLines = 1
                     )
                 }
+                // Title under the badge: 185 x 20, Inter 600 SemiBold 15/20, #535353.
+                // Longer titles auto-shrink so they still enter in one line.
+                Text(
+                    text = title,
+                    fontSize = if (title.length > 22) 12.sp else 15.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    lineHeight = 20.sp,
+                    letterSpacing = 0.sp,
+                    color = Color(0xFF535353),
+                    maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+                    modifier = Modifier
+                        .width(185.dp)
+                        .height(20.dp)
+                )
             }
+            // Description beneath title: 205 x 48, Inter 400 Regular 12/16, #535353.
+            Text(
+                text = description,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Normal,
+                lineHeight = 16.sp,
+                letterSpacing = 0.sp,
+                color = Color(0xFF535353),
+                modifier = Modifier
+                    .width(205.dp)
+                    .height(48.dp)
+            )
         }
 
         // Right side: 98 x 98 image, radius 4, on #1E1E1E

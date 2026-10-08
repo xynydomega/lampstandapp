@@ -27,7 +27,8 @@ import com.example.lampstand.ui.theme.LampStandTheme
 @Composable
 fun FandAPathScreen(
     onBack: () -> Unit = {},
-    onItemSelected: (Int) -> Unit = {}
+    onItemSelected: (Int) -> Unit = {},
+    onCardClick: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -101,11 +102,32 @@ fun FandAPathScreen(
                         com.example.lampstand.R.drawable.crown,
                         com.example.lampstand.R.drawable.shipsail
                     )
+                    val cardTitles = listOf(
+                        "Trust in Uncertainty",
+                        "When Anxiety Won\u2019t Stop",
+                        "Fear of Failure",
+                        "When the Worst Happens",
+                        "Afraid of What People Think",
+                        "When You Don\u2019t Feel Safe"
+                    )
+                    val cardDescriptions = listOf(
+                        "For when the future feels unclear and you\u2019re trying to trust God one step at a time.",
+                        "For the moments when your mind won\u2019t slow down and you need calm and clarity.",
+                        "For when the pressure to succeed makes you doubt yourself or hold back.",
+                        "For the seasons when life breaks unexpectedly and you need strength to get through.",
+                        "For when fear of judgment steals your confidence and you want to live freely again.",
+                        "For the moments you feel vulnerable or overwhelmed and long for steady peace."
+                    )
                     cardImages.forEachIndexed { index, imageRes ->
                         if (index > 0) {
                             Spacer(modifier = Modifier.height(12.dp))
                         }
-                        FeaturedPathCard(imageRes = imageRes)
+                        FeaturedPathCard(
+                            imageRes = imageRes,
+                            title = cardTitles.getOrElse(index) { cardTitles[0] },
+                            description = cardDescriptions.getOrElse(index) { cardDescriptions[0] },
+                            onClick = onCardClick
+                        )
                     }
                 }
             }
