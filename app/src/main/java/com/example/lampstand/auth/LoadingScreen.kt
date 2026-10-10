@@ -1,4 +1,4 @@
-package com.example.lampstand.splash
+package com.example.lampstand.auth
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
